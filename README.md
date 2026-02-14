@@ -1,4 +1,4 @@
-# Ordenador de Notas de Corretagem (Genial)
+# Ordenador de Notas de Corretagem (Corretora Genial)
 
 Este script Python organiza as notas de corretagem da Genial, prefixando o nome do arquivo com a data no formato ISO (`YYYY-MM-DD`). Isso garante que os arquivos fiquem ordenados cronologicamente no explorador de arquivos do computador.
 
