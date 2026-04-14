@@ -29,16 +29,16 @@ def rename_files(directory, pattern):
         match = regex.match(filename)
 
         if match:
-            # Procura pelo padrão de data DD-MM-AA no nome do arquivo
-            # Esta regex procura especificamente por dois dígitos, traço, dois dígitos, traço, dois dígitos
-            date_match = re.search(r"(\d{2})-(\d{2})-(\d{2})", filename)
+            # Procura pelo padrão de data DD-MM-AA ou DD-MM-AAAA no nome do arquivo
+            # Usa lookahead/lookbehind para garantir que não estamos pegando parte de um número maior
+            date_match = re.search(r"(?<!\d)(\d{2})-(\d{2})-(\d{2,4})(?!\d)", filename)
 
             if date_match:
-                day, month, year_short = date_match.groups()
+                day, month, year = date_match.groups()
 
-                # Converte o ano curto (AA) para o ano completo (AAAA)
-                # Assumindo 20xx para os anos
-                full_year = f"20{year_short}"
+                # Converte o ano curto (AA) para o ano completo (AAAA) se necessário
+                # Assumindo 20xx para os anos de dois dígitos
+                full_year = f"20{year}" if len(year) == 2 else year
 
                 # Constrói o novo prefixo: AAAA-MM-DD
                 iso_date = f"{full_year}-{month}-{day}"
