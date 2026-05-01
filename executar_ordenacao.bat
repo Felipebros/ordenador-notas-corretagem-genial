@@ -1,2 +1,2 @@
-python ordenador.py "NotaCorretagem_.*\.pdf"
+python ordenador.py "NotaCorretagem_.*\.pdf|NotaNegociacao-.*\.pdf"
 pause
