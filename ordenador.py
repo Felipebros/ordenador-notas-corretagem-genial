@@ -49,12 +49,12 @@ def rename_files(directory, pattern):
 
                 try:
                     os.rename(old_path, new_path)
-                    print(f"Sucesso: {filename} -> {new_name}")
+                    print(f"\nSucesso: {filename} -> {new_name}")
                     files_processed += 1
                 except Exception as e:
                     print(f"Erro ao renomear {filename}: {e}")
             else:
-                print(f"Aviso: Padrão de data não encontrado em '{filename}'")
+                print(f"\nAVISO: Padrão de data não encontrado em '{filename}'")
 
     print(f"\nConcluído. Total de arquivos renomeados: {files_processed}")
 
@@ -64,9 +64,11 @@ if __name__ == "__main__":
         description="Ordenador de Notas de Corretagem: Renomeia arquivos prefixando a data no formato ISO para melhor organização."
     )
 
-    # Argumento para o padrão de regex
+    # Argumento para o padrão de regex (agora opcional com valor padrão)
     parser.add_argument(
         "pattern",
+        nargs="?",
+        default="NotaCorretagem_.*\.pdf|NotaNegociacao-.*\.pdf",
         help="Expressão regular para filtrar os arquivos (ex: 'NotaCorretagem.*\.pdf')",
     )
 
